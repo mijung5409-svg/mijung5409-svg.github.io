@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starbucks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 기본 스타일 초기화 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+        }
+
+main {
+    background: url(img/cf.jpg) no-repeat center center / cover;
+    margin: 20px auto;
+    max-width: 1600px;
+    width: 100%;
+    aspect-ratio: 16 / 9; 
+    border-radius: 30px;
+}
+
+        .hero h3 {
+            color: #1e3932;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            color: #1e3932;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .recipe-container {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .recipe-item {
+            flex: 1;
+        }
+
+        .recipe-item img {
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .recipe-item p {
+            font-weight: bold;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .recipe-item span {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* ===== SECTION 1: MD상품 (초록색 섹션) ===== */
+        .md-section {
+            background: #1e3932;
+            /* 스타벅스 그린 */
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .md-section h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .md-section h4 {
+            font-weight: normal;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .product-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        .product-box {
+            flex: 1;
+        }
+
+        .product-box p {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        /* ===== BANNER: 벚꽃 배너 (둥근 모서리) ===== */
+        .cherry-banner {
+            padding: 60px 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .cherry-banner img {
+            max-width: 1000px;
+            margin: auto;
+            border-radius: 0 150px 0 150px;
+            /* 이미지처럼 비대칭 곡선 적용 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== PICK FAVORITE (그리드) ===== */
+        .pick-section {
+            background: #1e3932;
+            color: #fff;
+            padding: 60px 20px;
+        }
+
+        .pick-inner {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .pick-text {
+            flex: 1;
+        }
+
+        .pick-text h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .pick-images {
+            flex: 1.5;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .pick-images img {
+            border-radius: 5px;
+        }
+
+        /* ===== STORE: 매장 안내 ===== */
+        .store-section {
+            background: #f4f4f2;
+            padding: 80px 20px;
+        }
+
+        .store-inner {
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .store-img {
+            flex: 1;
+        }
+
+        .store-img img {
+            border-radius: 15px;
+        }
+
+        .store-text {
+            flex: 1;
+        }
+
+        .store-text h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .store-text p {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .btn-find {
+            padding: 10px 30px;
+            border: 2px solid #222;
+            background: transparent;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-find:hover {
+            background: #222;
+            color: #fff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 60px 20px;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+        }
+
+        .footer-item h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-item a {
+            display: block;
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .copy {
+            max-width: 1000px;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <img src="img/starbucks.jpg" alt="Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Coffee</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="#">What's New</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main></main>
+
+    <section class="md-section">
+        <h2>이달의 MD상품</h2>
+        <h4>추천메뉴</h4>
+        <div class="product-grid">
+            <div class="product-box">
+                <img src="img/mug.jpg" alt="머그">
+                <p>디스커버리 코리아 머그 414ml</p>
+            </div>
+            <div class="product-box">
+                <img src="img/mug2.jpg" alt="텀블러">
+                <p>SS 블루밍 모모 레오 </p>
+                <p> 텀블러 473ml</p>
+            </div>
+            <div class="product-box">
+                <img src="img/mug3.jpg" alt="트리플">
+                <p>SS 배꽃 퀸텐 텀블러 237ml</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cherry-banner">
+        <img src="img/fff.jpg" alt="Cherry Blossom">
+    </section>
+
+    <section class="pick-section">
+        <div class="pick-inner">
+            <div class="pick-text">
+                <h1>PICK YOUR FAVORITE</h1>
+                <p>나만의 메뉴를 선택하세요</p>
+            </div>
+            <div class="pick-images">
+                <img src="img/bc.jpg" alt="pick1">
+                <img src="img/cake.jpg" alt="pick2">
+                <img src="img/sand.jpg" alt="pick3">
+            </div>
+        </div>
+    </section>
+
+    <section class="store-section">
+        <div class="store-inner">
+            <div class="store-img">
+                <img src="img/place.jpg" alt="Store">
+            </div>
+            <div class="store-text">
+                <h2>전국 어디서나 스타벅스와 함께!</h2>
+                <p>나를 위한 취향이 머무는 곳, 스타벅스 리저브 매장<br>
+                    함께해서 더 따뜻한 지역사회 소통 공간까지.</p>
+                <button class="btn-find">매장 찾기</button>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-item">
+                <h3>COMPANY</h3>
+                <a href="#">한눈에 보기</a>
+                <a href="#">스타벅스의 사명</a>
+                <a href="#">채용정보</a>
+            </div>
+            <div class="footer-item">
+                <h3>PARTNERSHIP</h3>
+                <a href="#">신규 입점 제의</a>
+                <a href="#">협력 고객사 등록</a>
+            </div>
+            <div class="footer-item">
+                <h3>ONLINE</h3>
+                <a href="#">페이스북</a>
+                <a href="#">인스타그램</a>
+                <a href="#">유튜브</a>
+            </div>
+            <div class="footer-item">
+                <h3>CUSTOMER</h3>
+                <a href="#">고객센터</a>
+                <a href="#">FAQ</a>
+            </div>
+        </div>
+        <div class="copy">
+            <p>© 2026 Starbucks Coffee Company. All Rights Reserved.</p>
+            <img src="img/footer_logo.png" alt="" style="width:30px; opacity:0.5;">
+        </div>
+    </footer>
+
+</body>
+
+</html>
