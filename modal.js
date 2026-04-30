@@ -1,4 +1,3 @@
-// 프로젝트 정보 데이터
 const projects = {
   project1: {
     title: 'Poster',
@@ -31,11 +30,13 @@ const projects = {
     description: '제품의 가치를 높이는 프리미엄 상세페이지 디자인'
   }
 };
-// 모달 열기 함수
+
 function openModal(projectId) {
   const modal = document.getElementById('modal');
   const modalBody = document.getElementById('modal-body');
   const project = projects[projectId];
+
+  if (!project) return;
 
   modalBody.innerHTML = `
     <img src="${project.image}" alt="${project.title}">
@@ -47,23 +48,22 @@ function openModal(projectId) {
   document.body.style.overflow = 'hidden';
 }
 
-// 모달 닫기 함수
 function closeModal() {
   const modal = document.getElementById('modal');
   modal.classList.remove('active');
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = '';
 }
 
-// 모달 외부 클릭시 닫기
 function closeModalOnOutside(event) {
-  if (event.target.id === 'modal') {
+  if (event.target === event.currentTarget) {
     closeModal();
   }
 }
 
-// ESC 키로 모달 닫기
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
+document.addEventListener('keydown', function (event) {
+  const modal = document.getElementById('modal');
+
+  if (event.key === 'Escape' && modal.classList.contains('active')) {
     closeModal();
   }
 });
