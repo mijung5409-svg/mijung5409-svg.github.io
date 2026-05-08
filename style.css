@@ -209,3 +209,80 @@ footer {
   cursor: pointer;
   font-size: 20px;
 }
+/* =========================
+   반응형 추가 코드
+========================= */
+
+/* 메인 이미지 비율 유지 */
+main {
+  background-size: cover;
+  background-position: center;
+}
+
+/* About 이미지 반응형 */
+#about img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 태블릿 */
+@media screen and (max-width: 1024px) {
+
+  .gallery {
+    justify-content: center;
+  }
+
+  .box {
+    width: calc(50% - 20px);
+  }
+
+  .web-project {
+    flex-direction: column;
+  }
+
+  nav ul {
+    gap: 12px;
+  }
+}
+
+/* 모바일 */
+@media screen and (max-width: 768px) {
+
+  .head {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .title,
+  h2 {
+    font-size: 22px;
+  }
+
+  .gallery {
+    gap: 15px;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .web-project {
+    gap: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  footer {
+    font-size: 13px;
+  }
+}
